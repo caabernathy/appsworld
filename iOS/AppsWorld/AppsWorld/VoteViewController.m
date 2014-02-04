@@ -89,12 +89,11 @@
     PFUser *enteredBy = object[@"enteredBy"];
     cell.textLabel.text = enteredBy[@"displayName"];
     
-//    // DEMO-STEP 6: Cloud Code: After Save Hook
-//    // Thumbnail image
-//    PFFile *thumbnail = object[@"thumbnail"] ? object[@"thumbnail"] : object[@"image"];
+    // DEMO-STEP 6: Cloud Code: After Save Hook
+    // Thumbnail image
+    PFFile *thumbnail = object[@"thumbnail"] ? object[@"thumbnail"] : object[@"image"];
 //    NSLog(@"Thumbnail URL: %@", thumbnail.url);
 
-    PFFile *thumbnail = object[@"image"];
     cell.imageView.file = thumbnail;
     
     return cell;
@@ -137,36 +136,8 @@
     }
 }
 
-- (void) saveVotes
-{
-    for (PFObject *entry in self.voteSelections) {
-        // Increment by 5
-        [entry incrementKey:@"score" byAmount:[NSNumber numberWithInt:5]];
-    }
-    [PFObject saveAllInBackground:self.voteSelections block:^(BOOL succeeded, NSError *error) {
-        if (error) {
-            // Notify the user of the error
-            NSLog(@"Error saving new entry info: %@", error.localizedDescription);
-            [[[UIAlertView alloc] initWithTitle:@"Error"
-                                        message:@"Could not save data"
-                                       delegate:self
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil]
-             show];
-        } else {
-            // Notify the user of the success
-            [[[UIAlertView alloc] initWithTitle:@"Success"
-                                        message:@"Votes saved"
-                                       delegate:self
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil]
-             show];
-        }
-    }];
-}
-
 // DEMO-STEP 6: Cloud Code: Cloud Function
-- (void) saveVotesCF
+- (void) saveVotes
 {
     // Cloud Function style (ACL fix)
     NSMutableArray *entryIds = [@[] mutableCopy];
