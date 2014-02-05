@@ -89,7 +89,7 @@
     PFUser *enteredBy = object[@"enteredBy"];
     cell.textLabel.text = enteredBy[@"displayName"];
     
-    // DEMO-STEP 6: Cloud Code: After Save Hook
+    // DEMO-STEP 6: Cloud Code: Before Save Hook
     // Thumbnail image
     PFFile *thumbnail = object[@"thumbnail"] ? object[@"thumbnail"] : object[@"image"];
 //    NSLog(@"Thumbnail URL: %@", thumbnail.url);
