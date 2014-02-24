@@ -37,3 +37,5 @@ If you wish to test Background Jobs, [read up on SendGrid](https://www.parse.com
 1. Open CloudCode/cloud/main.js and replace the SendGrid username and password with your own:
 
         SendGrid.initialize("YOUR_SENDGRID_USERNAME", "YOUR_SENDGRID_PASSWORD");
+
+1. Go to the Data Browser panel in your app's Dashboard. Create a new class called ''Contest''. Create a String type column named ''title''. Create a Boolean type column named ''active''. Add a row to the class. Fill in the title and set the active field to true.
